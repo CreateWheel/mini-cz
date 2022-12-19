@@ -1,4 +1,4 @@
-import { exec, prompt } from "clerc/toolkit";
+import { exec, prompt, task } from "clerc/toolkit";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
@@ -69,7 +69,13 @@ export const commit = async (config: Config, { all = false }: CommitOptions = {}
   const selectedKind = config.kinds.find(k => k.name === kind);
   const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji });
   if (all) {
-    await exec("git", ["add", "-A"]);
+    task("git add -A", async ({ setTitle }) => {
+      setTitle("git add -A");
+      await exec("git", ["add", "-A"]);
+    });
   }
-  await exec("git", ["commit", "-m", commitMessage], { stdio: "inherit" });
+  task("git commit", async ({ setTitle }) => {
+    setTitle("git commit");
+    await exec("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
+  });
 };
