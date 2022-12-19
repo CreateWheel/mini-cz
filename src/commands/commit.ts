@@ -14,7 +14,7 @@ export const commitCommand = defineCommand({
       alias: "a",
     },
   },
-  handler: async (ctx) => {
+  handler: async(ctx) => {
     const config = await resolveConfig();
     const options = {
       all: ctx.flags.all,

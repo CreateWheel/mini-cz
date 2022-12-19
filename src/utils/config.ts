@@ -3,7 +3,7 @@ import { loadConfig } from "unconfig";
 import type { Config } from "../types";
 import { errorAndExit } from "./helpers";
 
-export const resolveConfig = async () => {
+export const resolveConfig = async() => {
   const { config } = await loadConfig<Config>({
     sources: [
       {
@@ -13,7 +13,7 @@ export const resolveConfig = async () => {
       {
         files: "package.json",
         extensions: [],
-        rewrite (config: any) {
+        rewrite(config: any) {
           return config["mini-cz"];
         },
       },

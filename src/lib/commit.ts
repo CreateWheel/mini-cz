@@ -24,7 +24,7 @@ const generateCommitMessage = ({ kind, scope, emoji, description }: GenerateComm
 };
 
 interface CommitOptions { all?: boolean }
-export const commit = async (config: Config, { all = false }: CommitOptions = {}) => {
+export const commit = async(config: Config, { all = false }: CommitOptions = {}) => {
   const kindChoices = config.kinds.map(({ name, description }) => ({
     title: name,
     value: name,
@@ -69,12 +69,12 @@ export const commit = async (config: Config, { all = false }: CommitOptions = {}
   const selectedKind = config.kinds.find(k => k.name === kind);
   const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji });
   if (all) {
-    task("git add -A", async ({ setTitle }) => {
+    task("git add -A", async({ setTitle }) => {
       setTitle("git add -A");
       await exec("git", ["add", "-A"]);
     });
   }
-  task("git commit", async ({ setTitle }) => {
+  task("git commit", async({ setTitle }) => {
     setTitle("git commit");
     await exec("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
   });
