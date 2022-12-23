@@ -1,11 +1,11 @@
 {
-  "name": "mini-cz",
-  "version": "0.0.1",
+  "name": "@mini-cz/monorepo",
+  "private": true,
+  "version": "0.0.0",
   "packageManager": "pnpm@7.18.0",
-  "author": "Ray <nn_201312@163.com> (@so1ve)",
-  "description": "The minimal commitizen cli.",
+  "author": "Ray <nn_201312@163.com> (https://github.com/so1ve)",
+  "description": "",
   "keywords": [],
-  "type": "module",
   "homepage": "https://github.com/CreateWheel/mini-cz#readme",
   "repository": {
     "type": "git",
@@ -15,66 +15,31 @@
     "url": "https://github.com/CreateWheel/mini-cz/issues"
   },
   "license": "MIT",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
-    },
-    "./cli": {
-      "types": "./dist/cli.d.ts",
-      "import": "./dist/cli.mjs"
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "bin": {
-    "mcz": "bin/mcz.mjs"
-  },
-  "files": [
-    "dist",
-    "bin"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "build": "rimraf dist && puild",
-    "watch": "puild --watch",
+    "build": "rimraf packages/*/dist && pnpm -r run build",
+    "watch": "pnpm -r --parallel run watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "nr build",
-    "release": "bumpp --commit --push --tag && pnpm publish",
-    "start": "tsx src/index.ts",
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag && nr build && pnpm publish -r --filter ./packages/*",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "clerc": "^0.11.1",
-    "unconfig": "^0.3.7"
+    "typecheck": "tsc --noEmit",
+    "commit": "tsx ./packages/mini-cz/src/cli.ts"
   },
   "devDependencies": {
     "@antfu/ni": "^0.18.8",
-    "@babel/types": "^7.20.5",
-    "@so1ve/eslint-config": "^0.32.3",
+    "@babel/types": "^7.20.7",
+    "@so1ve/eslint-config": "^0.34.0",
     "@types/node": "^18.11.17",
     "bumpp": "^8.2.1",
     "eslint": "^8.30.0",
-    "pnpm": "^7.18.2",
+    "jiti": "^1.16.0",
+    "pnpm": "^7.19.0",
     "puild": "^1.3.2",
     "rimraf": "^3.0.2",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4",
-    "vite": "^4.0.2",
-    "vitest": "^0.25.8"
+    "vite": "^4.0.3",
+    "vitest": "^0.26.2"
   }
 }

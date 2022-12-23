@@ -1,11 +1,10 @@
-import { defineConfig } from "./src/utils/helpers";
+import configDefault from "./packages/config-default/src/index";
+import { defineConfig } from "./packages/mini-cz/src/index";
 
 export default defineConfig({
-  kinds: [
-    {
-      name: "feat",
-      description: "A new feature",
-      emoji: "😝",
-    },
+  ...configDefault,
+  scopes: [
+    "core",
+    "config-default",
   ],
 });

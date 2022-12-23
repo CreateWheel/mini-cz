@@ -7,17 +7,17 @@ export const commitCommand = defineCommand({
   name: SingleCommand,
   description: "Commit!",
   flags: {
-    all: {
+    add: {
       type: Boolean,
-      description: "Commit all changes",
+      description: "Add changes",
       default: false,
       alias: "a",
     },
   },
-  handler: async(ctx) => {
+  handler: async (ctx) => {
     const config = await resolveConfig();
     const options = {
-      all: ctx.flags.all,
+      add: ctx.flags.add,
     };
     await commit(config, options);
   },

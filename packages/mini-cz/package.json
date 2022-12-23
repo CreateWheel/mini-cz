@@ -1,0 +1,58 @@
+{
+  "name": "mini-cz",
+  "version": "0.0.1",
+  "packageManager": "pnpm@7.18.0",
+  "author": "Ray <nn_201312@163.com> (@so1ve)",
+  "description": "The minimal commitizen cli.",
+  "keywords": [],
+  "type": "module",
+  "homepage": "https://github.com/CreateWheel/mini-cz#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CreateWheel/mini-cz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CreateWheel/mini-cz/issues"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.ts",
+      "import": "./dist/cli.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "bin": {
+    "mcz": "bin/mcz.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && puild",
+    "watch": "puild --watch"
+  },
+  "dependencies": {
+    "c12": "^1.1.0",
+    "clerc": "^0.12.3"
+  }
+}

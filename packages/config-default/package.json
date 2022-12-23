@@ -1,0 +1,52 @@
+{
+  "name": "@mini-cz/config-default",
+  "version": "0.0.1",
+  "packageManager": "pnpm@7.18.0",
+  "author": "Ray <nn_201312@163.com> (@so1ve)",
+  "description": "Mini-cz default config.",
+  "keywords": [],
+  "type": "module",
+  "homepage": "https://github.com/CreateWheel/mini-cz#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CreateWheel/mini-cz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CreateWheel/mini-cz/issues"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && puild",
+    "watch": "puild --watch"
+  },
+  "peerDependencies": {
+    "mini-cz": "*"
+  },
+  "devDependencies": {
+    "mini-cz": "workspace:*"
+  }
+}
