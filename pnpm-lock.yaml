@@ -43,10 +43,10 @@ importers:
   packages/mini-cz:
     specifiers:
       c12: ^1.1.0
-      clerc: ^0.12.3
+      clerc: ^0.12.4
     dependencies:
       c12: 1.1.0
-      clerc: 0.12.3
+      clerc: 0.12.4
 
 packages:
 
@@ -97,77 +97,77 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@clerc/core/0.12.3:
-    resolution: {integrity: sha512-vjjveVEah+TqBRv5J2sci4VFHIetLl4+HICVwasRI6jG85yB5wP3HAIrvvRFuPsXJY+pPmYEu9UNj/L6Oq8JLg==}
+  /@clerc/core/0.12.4:
+    resolution: {integrity: sha512-A5EkTzxfquy83+8eSLfWbFQW7LRzSvLo+ypR5SERj3HKiz9MgPhrddYRXxVI1JCbiKwAmDQoO/W4vQT9gL0lzQ==}
     dependencies:
-      '@clerc/utils': 0.12.3_@clerc+core@0.12.3
+      '@clerc/utils': 0.12.4_@clerc+core@0.12.4
       is-platform: 0.2.0
       lite-emit: 1.4.0
       type-flag: 3.0.0
     dev: false
 
-  /@clerc/plugin-completions/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-ZN0g2yGtM4r9EYXyMkhmNp1O5j5N0lKbPUoui3dW9FlSs2+g+QDpDHmaGzMZ4Z5Sxa4Pv6a7jzOKnvhmODl+NA==}
+  /@clerc/plugin-completions/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-ncTFoCrbtH2DgVpiKNylwjr5cVjEqpDpEvJ4R4lquT/O4yVcuEM6ijmx5N0Wk337bkHeQrGXgxUU4QyAimNa/A==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
-      '@clerc/utils': 0.12.3_@clerc+core@0.12.3
+      '@clerc/core': 0.12.4
+      '@clerc/utils': 0.12.4_@clerc+core@0.12.4
     dev: false
 
-  /@clerc/plugin-friendly-error/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-1NsrPwwLETUuqXmWglRnSmTaursZO1iQnJh3GsCNNzcFZCY0NAvJO8ozG2LkExRG3JZh7fBjcBaK63FO9W5v8A==}
+  /@clerc/plugin-friendly-error/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-/Abtz5yLVM4YTCL/6FMbB6Ek+RbnZ9SKfN2Dwvv/H0OmZi4jjA7F/bBd444k4ASbnuo/DfbJ4RhtkxqaGPtATA==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
-      '@clerc/toolkit': 0.12.3_@clerc+core@0.12.3
+      '@clerc/core': 0.12.4
+      '@clerc/toolkit': 0.12.4_@clerc+core@0.12.4
     dev: false
 
-  /@clerc/plugin-help/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-GfAFMUyTT+ViixSJzlDTX1CGeeNXgKp8xONhUv7j3KxrRgYu7yAfnmIC7ffDhCM1VjD3wiRs4x+nFLYoQTzTTQ==}
+  /@clerc/plugin-help/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-QvCkGyhu06TA3wpHfKY06YrZ1ce99Rj+V8JGSrDZ5czKS3JD0uy1W6lMpOCh3S/Y5cFbppMTACBq82FJOQ863Q==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
-      '@clerc/toolkit': 0.12.3_@clerc+core@0.12.3
-      '@clerc/utils': 0.12.3_@clerc+core@0.12.3
+      '@clerc/core': 0.12.4
+      '@clerc/toolkit': 0.12.4_@clerc+core@0.12.4
+      '@clerc/utils': 0.12.4_@clerc+core@0.12.4
       picocolors: 1.0.0
     dev: false
 
-  /@clerc/plugin-not-found/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-6vmbyVM2d9NEEdeq7+oMmceJy50C2qaTeADgKndUeyep6oCs5CUkPqp/XlJb6Xf6ClklBGp1l4kOC6cqOz2M2g==}
+  /@clerc/plugin-not-found/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-ZSTxaUKZSALD5UQBPq1HRmZExVj8wn58DJPdJ1d1MQmr0phkW6QUdFLV0SSMjAGMsBCDKMKhkEb/jwHgZgI/nA==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
-      '@clerc/utils': 0.12.3_@clerc+core@0.12.3
+      '@clerc/core': 0.12.4
+      '@clerc/utils': 0.12.4_@clerc+core@0.12.4
       didyoumean2: 5.0.0
       picocolors: 1.0.0
     dev: false
 
-  /@clerc/plugin-strict-flags/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-JFFtYKaypVthdZWaj93UmS/VRDtM79+Kqckb8yEtyzkqYiNl/j42hpBRpJ302UOq4NBN65DWvyUG51hj3u2X7g==}
+  /@clerc/plugin-strict-flags/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-4Gnabn3RbHdQYzAqOne15TVBMeNG+HLmQGBJCaVKSoKLj8qy+79nbEdTcsS8QTJ8VWfDcYJh//teaYqt2nC0og==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
+      '@clerc/core': 0.12.4
     dev: false
 
-  /@clerc/plugin-version/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-cbNcamrnJnCWUCbX6jLKDt7uNK8sJrRsiCNTBfIHbea4A1WPSAwX/bYe2MTFQwYWq2rKlPLC69vl5Ltuin9QkQ==}
+  /@clerc/plugin-version/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-t6/PUtWhWF43dlcPtvz2s90T5RGyep2hi6ivdc6DJQDw1I3K9ESZbfjkuYVoRs8qsGuMIacv2DZ2ApIb0RmkxQ==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
+      '@clerc/core': 0.12.4
     dev: false
 
-  /@clerc/toolkit/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-FuLIGWu/bSQ/sPKjLY+3frxtFaRbxTe6Copn7wFxIsoVThjK6T+HIYGhZIyiiT8e5797LrKSsDbMSMTdYK4HMQ==}
+  /@clerc/toolkit/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-E1rmPR6DL3f2fby/ZmrM0FtXnb97H3+xjzyIrodoaS+mbjBokWH/dCZ7JT1yCQYVDK7xeYpowlWyEG0fmZzIkg==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
+      '@clerc/core': 0.12.4
       '@types/cli-progress': 3.11.0
       '@types/prompts': 2.4.2
       cli-progress: 3.11.2
@@ -182,12 +182,12 @@ packages:
       terminal-link: 3.0.0
     dev: false
 
-  /@clerc/utils/0.12.3_@clerc+core@0.12.3:
-    resolution: {integrity: sha512-YSbNY+mRtlJdOqEeE/FXQqe/mWISobxoeNVR10tIluIWdT+wrvy9mJwO49HCs/66cK8AYUyUnCQMHv/D06ScqQ==}
+  /@clerc/utils/0.12.4_@clerc+core@0.12.4:
+    resolution: {integrity: sha512-EWdjquTT/XBnrgZxmzIgZVIYEYGPmzFUEzJIWDrTrjfPtHZPOBvHPW6nFr/pjHJUQJBzhO8Qx//x4kEJmrOm0Q==}
     peerDependencies:
       '@clerc/core': '*'
     dependencies:
-      '@clerc/core': 0.12.3
+      '@clerc/core': 0.12.4
     dev: false
 
   /@colors/colors/1.5.0:
@@ -1179,17 +1179,17 @@ packages:
       escape-string-regexp: 1.0.5
     dev: true
 
-  /clerc/0.12.3:
-    resolution: {integrity: sha512-DJiK0Gwr8EK/Q/h4A8djVC3FYbP+8in3f+zx2ykBNXpf/jmHFHpTw68pxhm4nAip6+p9qupaXXwJ2ibjr086pw==}
+  /clerc/0.12.4:
+    resolution: {integrity: sha512-cYjjczWF30TTHYafGOqgWDAoFxewKmH7b20ACzF24QWm+tkqtN5Iv+2Tx/pUHGaWgDUMRBzqhN9geMyZf1DFDA==}
     dependencies:
-      '@clerc/core': 0.12.3
-      '@clerc/plugin-completions': 0.12.3_@clerc+core@0.12.3
-      '@clerc/plugin-friendly-error': 0.12.3_@clerc+core@0.12.3
-      '@clerc/plugin-help': 0.12.3_@clerc+core@0.12.3
-      '@clerc/plugin-not-found': 0.12.3_@clerc+core@0.12.3
-      '@clerc/plugin-strict-flags': 0.12.3_@clerc+core@0.12.3
-      '@clerc/plugin-version': 0.12.3_@clerc+core@0.12.3
-      '@clerc/toolkit': 0.12.3_@clerc+core@0.12.3
+      '@clerc/core': 0.12.4
+      '@clerc/plugin-completions': 0.12.4_@clerc+core@0.12.4
+      '@clerc/plugin-friendly-error': 0.12.4_@clerc+core@0.12.4
+      '@clerc/plugin-help': 0.12.4_@clerc+core@0.12.4
+      '@clerc/plugin-not-found': 0.12.4_@clerc+core@0.12.4
+      '@clerc/plugin-strict-flags': 0.12.4_@clerc+core@0.12.4
+      '@clerc/plugin-version': 0.12.4_@clerc+core@0.12.4
+      '@clerc/toolkit': 0.12.4_@clerc+core@0.12.4
     dev: false
 
   /cli-cursor/4.0.0:
