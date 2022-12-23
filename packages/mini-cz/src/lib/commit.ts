@@ -74,9 +74,6 @@ export const commit = async (config: Config, { add = false }: CommitOptions = {}
       message: "You have unadded changes. Do you want to add all changes?",
       type: "confirm",
     });
-    if (!addAll) {
-      errorAndExit("Commit aborted! (unadded changes)");
-    }
     add = addAll;
   }
 

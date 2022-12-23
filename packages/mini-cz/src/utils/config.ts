@@ -7,7 +7,7 @@ export const resolveConfig = async () => {
   const { config } = await loadConfig<Config>({
     name: "mini-cz",
   });
-  if (!config) {
+  if (!Object.keys(config!).length) {
     errorAndExit("Config file not found!");
   }
   return config!;
