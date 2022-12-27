@@ -14,10 +14,10 @@ export const commitCommand = defineCommand({
       alias: "a",
     },
   },
-  handler: async (ctx) => {
+  handler: async ({ flags }) => {
     const config = await resolveConfig();
     const options = {
-      add: ctx.flags.add,
+      add: flags.add,
     };
     await commit(config, options);
   },
