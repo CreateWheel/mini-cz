@@ -16,7 +16,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "rimraf packages/*/dist && pnpm -r run build",
+    "build": "pnpm -r run build",
     "watch": "pnpm -r --parallel run watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
