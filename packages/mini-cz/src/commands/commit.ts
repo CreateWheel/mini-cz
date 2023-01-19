@@ -1,10 +1,10 @@
-import { SingleCommand, defineCommand } from "clerc";
+import { Root, defineCommand } from "clerc";
 
 import { commit } from "../lib";
 import { resolveConfig } from "../utils";
 
 export const commitCommand = defineCommand({
-  name: SingleCommand,
+  name: Root,
   description: "Commit!",
   flags: {
     add: {
@@ -14,11 +14,10 @@ export const commitCommand = defineCommand({
       alias: "a",
     },
   },
-  handler: async ({ flags }) => {
-    const config = await resolveConfig();
-    const options = {
-      add: flags.add,
-    };
-    await commit(config, options);
-  },
+}, async ({ flags }) => {
+  const config = await resolveConfig();
+  const options = {
+    add: flags.add,
+  };
+  await commit(config, options);
 });

@@ -3,14 +3,11 @@ import { Clerc, friendlyErrorPlugin, helpPlugin, notFoundPlugin, strictFlagsPlug
 import { description, version } from "../package.json";
 import { commitCommand } from "./commands";
 
-const _cli = Clerc.create()
-  .name("mcz")
-  .description(description)
-  .version(version)
-  .use(helpPlugin({ command: false }))
+const _cli = Clerc.create("mcz", description, version)
+  .use(helpPlugin())
   .use(notFoundPlugin())
   .use(strictFlagsPlugin())
-  .use(versionPlugin({ command: false }))
+  .use(versionPlugin())
   .use(friendlyErrorPlugin())
   .command(commitCommand)
   .parse();
