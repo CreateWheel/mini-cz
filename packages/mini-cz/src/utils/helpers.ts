@@ -1,4 +1,4 @@
-import { kons } from "clerc/toolkit";
+import * as kons from "kons";
 
 import type { Config } from "../types";
 

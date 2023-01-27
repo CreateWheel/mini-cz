@@ -1,4 +1,6 @@
-import { exec, prompt, task } from "clerc/toolkit";
+import { execa } from "execa";
+import prompt from "prompts";
+import task from "tasuku";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
@@ -82,11 +84,11 @@ export const commit = async (config: Config, { add = false }: CommitOptions = {}
   if (add) {
     task("git add -A", async ({ setTitle }) => {
       setTitle("git add -A");
-      await exec("git", ["add", "-A"]);
+      await execa("git", ["add", "-A"]);
     });
   }
   task("git commit", async ({ setTitle }) => {
     setTitle("git commit");
-    await exec("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
+    await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
   });
 };
