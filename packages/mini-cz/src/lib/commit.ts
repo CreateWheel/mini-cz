@@ -36,6 +36,23 @@ export const commit = async (
     add = false,
   }: CommitOptions = {},
 ) => {
+  const hasUnadded = await haveUnaddedChanges();
+  if (hasUnadded) {
+    const { addAll } = await prompt({
+      name: "addAll",
+      message: "You have unadded changes. Do you want to add all changes?",
+      type: "confirm",
+    });
+    add = addAll;
+  }
+
+  if (add) {
+    task("git add -A", async ({ setTitle }) => {
+      setTitle("git add -A");
+      await execa("git", ["add", "-A"]);
+    });
+  }
+
   if (await noFileIsAdded()) {
     errorAndExit("No file is added. Aborting.");
   }
@@ -81,24 +98,8 @@ export const commit = async (
     errorAndExit("Description is required!");
   }
 
-  const hasUnadded = await haveUnaddedChanges();
-  if (hasUnadded) {
-    const { addAll } = await prompt({
-      name: "addAll",
-      message: "You have unadded changes. Do you want to add all changes?",
-      type: "confirm",
-    });
-    add = addAll;
-  }
-
   const selectedKind = config.kinds.find(k => k.name === kind);
   const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji });
-  if (add) {
-    task("git add -A", async ({ setTitle }) => {
-      setTitle("git add -A");
-      await execa("git", ["add", "-A"]);
-    });
-  }
   task("git commit", async ({ setTitle }) => {
     setTitle("git commit");
     await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });

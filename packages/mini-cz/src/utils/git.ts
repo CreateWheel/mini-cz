@@ -1,15 +1,15 @@
 import { execa } from "execa";
 
-export const haveUnaddedChanges = async () => {
+const gitStatus = async () => {
   const { stdout } = await execa("git", ["status", "--porcelain"]);
-  const unaddedChanges = stdout.split("\n")
-    .some(s => s[1] === "M");
+  return stdout.split("\n");
+};
+export const haveUnaddedChanges = async () => {
+  const unaddedChanges = (await gitStatus()).some(s => s[1] === "M");
   return unaddedChanges;
 };
 
 export const noFileIsAdded = async () => {
-  const { stdout } = await execa("git", ["status", "--porcelain"]);
-  const isNoFileAdded = stdout.split("\n")
-    .every(s => s[0] === "?" || s[0] === " ");
+  const isNoFileAdded = (await gitStatus()).every(s => s[0] === "?" || s[0] === " ");
   return isNoFileAdded;
 };
