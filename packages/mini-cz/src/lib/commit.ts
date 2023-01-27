@@ -4,7 +4,7 @@ import task from "tasuku";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
-import { haveUnaddedChanges } from "../utils/git";
+import { haveUnaddedChanges, noFileIsAdded } from "../utils/git";
 
 interface GenerateCommitOptions {
   kind: string
@@ -26,8 +26,20 @@ const generateCommitMessage = ({ kind, scope, emoji, description }: GenerateComm
   return commitMessage;
 };
 
-interface CommitOptions { add?: boolean }
-export const commit = async (config: Config, { add = false }: CommitOptions = {}) => {
+interface CommitOptions {
+  add?: boolean
+}
+
+export const commit = async (
+  config: Config,
+  {
+    add = false,
+  }: CommitOptions = {},
+) => {
+  if (await noFileIsAdded()) {
+    errorAndExit("No file is added. Aborting.");
+  }
+
   const kindChoices = config.kinds.map(({ name, description }) => ({
     title: name,
     value: name,
