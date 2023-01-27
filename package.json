@@ -1,7 +1,7 @@
 {
   "name": "@mini-cz/monorepo",
   "private": true,
-  "version": "0.1.5",
+  "version": "0.2.0",
   "packageManager": "pnpm@7.20.0",
   "author": "Ray <nn_201312@163.com> (https://github.com/so1ve)",
   "description": "",
@@ -40,7 +40,7 @@
     "tsx": "^3.12.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vitest": "^0.28.2"
+    "vitest": "^0.28.3"
   },
   "pnpm": {
     "patchedDependencies": {
