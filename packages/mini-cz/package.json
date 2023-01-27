@@ -48,10 +48,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && puild",
+    "build": "rimraf dist && puild --minify",
     "watch": "puild --watch"
   },
-  "dependencies": {
+  "devDependencies": {
     "@clerc/toolkit": "^0.26.0",
     "c12": "^1.1.0",
     "clerc": "^0.26.0",
