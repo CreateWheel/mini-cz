@@ -8,11 +8,12 @@ import { haveUnaddedChanges, noFileIsAdded } from "../utils/git";
 
 interface GenerateCommitOptions {
   kind: string
+  isBreaking: boolean
   emoji?: string
   scope?: string
   description: string
 }
-const generateCommitMessage = ({ kind, scope, emoji, description }: GenerateCommitOptions) => {
+const generateCommitMessage = ({ kind, scope, emoji, description, isBreaking }: GenerateCommitOptions) => {
   let commitMessage = "";
   if (emoji) {
     commitMessage += `${emoji} `;
@@ -20,6 +21,9 @@ const generateCommitMessage = ({ kind, scope, emoji, description }: GenerateComm
   commitMessage += kind;
   if (scope) {
     commitMessage += `(${scope})`;
+  }
+  if (isBreaking) {
+    commitMessage += "!";
   }
   commitMessage += ": ";
   commitMessage += description;
@@ -75,6 +79,12 @@ export const commit = async (
     choices: kindChoices,
   });
 
+  const { isBreaking } = await prompt({
+    name: "isBreaking",
+    message: "Is this a breaking change?",
+    type: "confirm",
+  });
+
   if (!kind) {
     errorAndExit("Kind is required!");
   }
@@ -99,7 +109,7 @@ export const commit = async (
   }
 
   const selectedKind = config.kinds.find(k => k.name === kind);
-  const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji });
+  const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji, isBreaking });
   task("git commit", async ({ setTitle }) => {
     setTitle("git commit");
     await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });

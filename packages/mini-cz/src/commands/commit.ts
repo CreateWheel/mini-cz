@@ -1,6 +1,5 @@
 import { Root, defineCommand } from "clerc";
 
-import { commit } from "../lib";
 import { resolveConfig } from "../utils";
 
 export const commitCommand = defineCommand({
@@ -15,6 +14,7 @@ export const commitCommand = defineCommand({
     },
   },
 }, async ({ flags }) => {
+  const { commit } = await import("../lib");
   const config = await resolveConfig();
   const options = {
     add: flags.add,
