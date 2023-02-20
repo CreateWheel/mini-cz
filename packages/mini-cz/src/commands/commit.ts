@@ -5,6 +5,7 @@ import { resolveConfig } from "../utils";
 export const commitCommand = defineCommand({
   name: Root,
   description: "Commit!",
+  alias: "commit",
   flags: {
     add: {
       type: Boolean,
