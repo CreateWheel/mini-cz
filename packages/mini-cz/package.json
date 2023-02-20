@@ -51,11 +51,8 @@
     "build": "rimraf dist && puild --minify",
     "watch": "puild --watch"
   },
-  "dependencies": {
-    "picocolors": "^1.0.0"
-  },
   "devDependencies": {
-    "@clack/prompts": "^0.4.3",
+    "@clerc/toolkit": "^0.31.0",
     "c12": "^1.1.2",
     "clerc": "^0.31.0",
     "execa": "^7.0.0",
