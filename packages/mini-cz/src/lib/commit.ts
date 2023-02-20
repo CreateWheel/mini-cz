@@ -1,7 +1,7 @@
+import { confirm, intro, outro, select, spinner, text } from "@clack/prompts";
+import pc from "picocolors";
 import * as kons from "kons";
 import { execa } from "execa";
-import prompt from "prompts";
-import task from "tasuku";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
@@ -49,38 +49,35 @@ export const commit = async (
     scope,
   }: CommitOptions = {},
 ) => {
+  intro(pc.inverse("Mini CZ: Commit"));
   if (await haveUnaddedChanges() && !add) {
-    const { addAll } = await prompt({
-      name: "addAll",
+    add = await confirm({
       message: "You have unadded changes. Do you want to add all changes?",
-      type: "confirm",
-    });
-    add = addAll;
+      initialValue: false,
+    }) as boolean;
   }
 
   if (add) {
-    task("git add -A", async ({ setTitle }) => {
-      setTitle("git add -A");
-      await execa("git", ["add", "-A"]);
-    });
+    const s = spinner();
+    s.start("git add -A");
+    await execa("git", ["add", "-A"]);
+    s.stop();
   }
 
   if (await noFileIsAdded()) {
     errorAndExit("No file is added. Aborting.");
   }
 
-  const kindChoices = config.kinds.map(({ name, description }) => ({
+  const kindOptions = config.kinds.map(({ name, description }) => ({
     title: name,
     value: name,
     description,
   }));
   const promptKind = async () => {
-    kind = await prompt({
-      name: "kind",
+    kind = await select({
       message: "Choose commit kind:",
-      type: "autocomplete",
-      choices: kindChoices,
-    }).then(({ kind }) => kind);
+      options: kindOptions,
+    }) as string;
   };
   if (!kind) {
     await promptKind();
@@ -92,29 +89,26 @@ export const commit = async (
   }
 
   if (!breaking) {
-    breaking = await prompt({
-      name: "isBreaking",
+    breaking = await confirm({
       message: "Is this a breaking change?",
-      type: "confirm",
-    }).then(({ isBreaking }) => isBreaking);
+      initialValue: false,
+    }) as boolean;
   }
 
   if (!kind) {
     errorAndExit("Kind is required!");
   }
 
-  const scopeChoices = (config.scopes || []).map(scope => ({
+  const scopeOptions = (config.scopes || []).map(scope => ({
     title: scope,
     value: scope,
   }));
   const promptScope = async () => {
     scope = config.scopes?.length
-      ? await prompt({
-        name: "scope",
+      ? await select({
         message: "Choose commit scope:",
-        type: "autocomplete",
-        choices: scopeChoices,
-      }).then(({ scope }) => scope)
+        options: scopeOptions,
+      }) as string
       : undefined;
   };
 
@@ -128,11 +122,9 @@ export const commit = async (
   }
 
   if (!message) {
-    message = await prompt({
-      name: "message",
+    message = await text({
       message: "Enter commit message:",
-      type: "text",
-    }).then(({ message }) => message);
+    }) as string;
   }
 
   if (!message) {
@@ -141,8 +133,10 @@ export const commit = async (
 
   const selectedKind = config.kinds.find(k => k.name === kind);
   const commitMessage = generateCommitMessage({ kind: kind!, scope, message: message!, emoji: selectedKind?.emoji, breaking: breaking! });
-  task("git commit", async ({ setTitle }) => {
-    setTitle("git commit");
-    await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
-  });
+  const s = spinner();
+  s.start("git commit");
+  await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
+  s.stop();
+
+  outro(pc.bgBlack("Mini CZ: Commit - Done!"));
 };
