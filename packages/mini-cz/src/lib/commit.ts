@@ -1,3 +1,4 @@
+import * as kons from "kons";
 import { execa } from "execa";
 import prompt from "prompts";
 import task from "tasuku";
@@ -8,12 +9,12 @@ import { haveUnaddedChanges, noFileIsAdded } from "../utils/git";
 
 interface GenerateCommitOptions {
   kind: string
-  isBreaking: boolean
+  breaking: boolean
   emoji?: string
   scope?: string
-  description: string
+  message: string
 }
-const generateCommitMessage = ({ kind, scope, emoji, description, isBreaking }: GenerateCommitOptions) => {
+const generateCommitMessage = ({ kind, scope, emoji, message, breaking }: GenerateCommitOptions) => {
   let commitMessage = "";
   if (emoji) {
     commitMessage += `${emoji} `;
@@ -22,26 +23,33 @@ const generateCommitMessage = ({ kind, scope, emoji, description, isBreaking }: 
   if (scope) {
     commitMessage += `(${scope})`;
   }
-  if (isBreaking) {
+  if (breaking) {
     commitMessage += "!";
   }
   commitMessage += ": ";
-  commitMessage += description;
+  commitMessage += message;
   return commitMessage;
 };
 
 interface CommitOptions {
   add?: boolean
+  message?: string
+  breaking?: boolean
+  kind?: string
+  scope?: string
 }
 
 export const commit = async (
   config: Config,
   {
     add = false,
+    message,
+    breaking,
+    kind,
+    scope,
   }: CommitOptions = {},
 ) => {
-  const hasUnadded = await haveUnaddedChanges();
-  if (hasUnadded) {
+  if (await haveUnaddedChanges() && !add) {
     const { addAll } = await prompt({
       name: "addAll",
       message: "You have unadded changes. Do you want to add all changes?",
@@ -66,50 +74,73 @@ export const commit = async (
     value: name,
     description,
   }));
+  const promptKind = async () => {
+    kind = await prompt({
+      name: "kind",
+      message: "Choose commit kind:",
+      type: "autocomplete",
+      choices: kindChoices,
+    }).then(({ kind }) => kind);
+  };
+  if (!kind) {
+    await promptKind();
+  }
+  const kindNames = config.kinds.map(({ name }) => name);
+  if (!kindNames.includes(kind!)) {
+    kons.error("Invalid kind.");
+    await promptKind();
+  }
 
-  const scopeChoices = (config.scopes || []).map(scope => ({
-    title: scope,
-    value: scope,
-  }));
-
-  const { kind } = await prompt({
-    name: "kind",
-    message: "Choose commit kind:",
-    type: "autocomplete",
-    choices: kindChoices,
-  });
-
-  const { isBreaking } = await prompt({
-    name: "isBreaking",
-    message: "Is this a breaking change?",
-    type: "confirm",
-  });
+  if (!breaking) {
+    breaking = await prompt({
+      name: "isBreaking",
+      message: "Is this a breaking change?",
+      type: "confirm",
+    }).then(({ isBreaking }) => isBreaking);
+  }
 
   if (!kind) {
     errorAndExit("Kind is required!");
   }
 
-  const { scope } = config.scopes?.length
-    ? await prompt({
-      name: "scope",
-      message: "Choose commit scope:",
-      type: "autocomplete",
-      choices: scopeChoices,
-    })
-    : { scope: undefined };
+  const scopeChoices = (config.scopes || []).map(scope => ({
+    title: scope,
+    value: scope,
+  }));
+  const promptScope = async () => {
+    scope = config.scopes?.length
+      ? await prompt({
+        name: "scope",
+        message: "Choose commit scope:",
+        type: "autocomplete",
+        choices: scopeChoices,
+      }).then(({ scope }) => scope)
+      : undefined;
+  };
 
-  const { description } = await prompt({
-    name: "description",
-    message: "Enter commit description:",
-    type: "text",
-  });
+  if (!scope) {
+    await promptScope();
+  }
 
-  if (!description) {
-    errorAndExit("Description is required!");
+  if (config.scopes?.length && !config.scopes.includes(scope!)) {
+    kons.error("Invalid scope.");
+    await promptScope();
+  }
+
+  if (!message) {
+    message = await prompt({
+      name: "message",
+      message: "Enter commit message:",
+      type: "text",
+    }).then(({ message }) => message);
+  }
+
+  if (!message) {
+    errorAndExit("Message is required!");
   }
 
   const selectedKind = config.kinds.find(k => k.name === kind);
-  const commitMessage = generateCommitMessage({ kind, scope, description, emoji: selectedKind?.emoji, isBreaking });
+  const commitMessage = generateCommitMessage({ kind: kind!, scope, message: message!, emoji: selectedKind?.emoji, breaking: breaking! });
   task("git commit", async ({ setTitle }) => {
     setTitle("git commit");
     await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });

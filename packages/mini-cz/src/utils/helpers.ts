@@ -2,7 +2,7 @@ import * as kons from "kons";
 
 import type { Config } from "../types";
 
-export const errorAndExit = (msg: string) => {
+export const errorAndExit = (msg: string): never => {
   kons.error(msg);
   process.exit(1);
 };

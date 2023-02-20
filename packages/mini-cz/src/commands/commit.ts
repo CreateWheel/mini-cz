@@ -13,12 +13,37 @@ export const commitCommand = defineCommand({
       default: false,
       alias: "a",
     },
+    message: {
+      type: String,
+      description: "Commit message",
+      alias: "m",
+    },
+    breaking: {
+      type: Boolean,
+      description: "Is breaking change",
+      default: false,
+      alias: "b",
+    },
+    kind: {
+      type: String,
+      description: "Commit type",
+      alias: "k",
+    },
+    scope: {
+      type: String,
+      description: "Commit scope",
+      alias: "s",
+    },
   },
 }, async ({ flags }) => {
   const { commit } = await import("../lib");
   const config = await resolveConfig();
   const options = {
     add: flags.add,
+    message: flags.message,
+    breaking: flags.breaking,
+    kind: flags.kind,
+    scope: flags.scope,
   };
   await commit(config, options);
 });
