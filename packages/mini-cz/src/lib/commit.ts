@@ -86,7 +86,7 @@ export const commit = async (
     await promptKind();
   }
   const kindNames = config.kinds.map(({ name }) => name);
-  if (!kindNames.includes(kind!)) {
+  if (kind && !kindNames.includes(kind)) {
     kons.error("Invalid kind.");
     await promptKind();
   }
@@ -122,7 +122,7 @@ export const commit = async (
     await promptScope();
   }
 
-  if (config.scopes?.length && !config.scopes.includes(scope!)) {
+  if (config.scopes?.length && scope && !config.scopes.includes(scope)) {
     kons.error("Invalid scope.");
     await promptScope();
   }
