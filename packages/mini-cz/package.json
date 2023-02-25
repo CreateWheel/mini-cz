@@ -1,6 +1,6 @@
 {
   "name": "mini-cz",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "packageManager": "pnpm@7.18.0",
   "author": "Ray <i@mk1.io> (@so1ve)",
   "description": "The minimal commitizen cli.",
@@ -52,12 +52,12 @@
     "watch": "puild --watch"
   },
   "devDependencies": {
-    "@clerc/toolkit": "^0.26.0",
-    "c12": "^1.1.0",
-    "clerc": "^0.26.0",
-    "execa": "^6.1.0",
+    "@types/prompts": "^2.4.2",
+    "c12": "^1.1.2",
+    "clerc": "^0.31.0",
+    "execa": "^7.0.0",
     "kons": "^0.6.2",
     "prompts": "^2.4.2",
-    "tasuku": "^2.0.0"
+    "tasuku": "^2.0.1"
   }
 }
