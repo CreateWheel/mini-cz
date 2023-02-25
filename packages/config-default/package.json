@@ -1,6 +1,6 @@
 {
   "name": "@mini-cz/config-default",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "packageManager": "pnpm@7.18.0",
   "author": "Ray <i@mk1.io> (@so1ve)",
   "description": "Mini-cz default config.",
