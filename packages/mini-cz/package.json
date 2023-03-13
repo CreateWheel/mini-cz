@@ -38,7 +38,7 @@
     }
   },
   "bin": {
-    "mcz": "bin/mcz.mjs"
+    "mcz": "./dist/cli.mjs"
   },
   "files": [
     "dist",
