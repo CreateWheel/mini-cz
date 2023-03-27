@@ -51,7 +51,7 @@ importers:
       c12: ^1.1.2
       clerc: ^0.31.0
       execa: ^7.0.0
-      kons: ^0.6.2
+      kons: ^0.7.0
       prompts: ^2.4.2
       tasuku: ^2.0.1
     devDependencies:
@@ -59,7 +59,7 @@ importers:
       c12: 1.2.0
       clerc: 0.31.0
       execa: 7.1.1
-      kons: 0.6.2
+      kons: 0.7.0
       prompts: 2.4.2
       tasuku: 2.0.1
 
@@ -2666,8 +2666,8 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /kons/0.6.2:
-    resolution: {integrity: sha512-6ne49lu5nUEXf++pUmxkomhj1cclaPZ78ylT3gm7W7cX83xrR/dQMoUJciYcP1+V9skhmLXF/k23cbMfALymoA==}
+  /kons/0.7.0:
+    resolution: {integrity: sha512-Im+d/pXR8+3ED6TMUxUKB0VSRf9TfOqVjqs6t29wY6zSYZlG5nnvdnhttI5cpxPhW1G28vOJQDtg3tlrkIZyVg==}
     dependencies:
       figures: 5.0.0
       picocolors: 1.0.0
