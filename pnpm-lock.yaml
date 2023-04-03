@@ -9,7 +9,7 @@ importers:
 
   .:
     specifiers:
-      '@antfu/ni': ^0.20.0
+      '@antfu/ni': ^0.21.0
       '@babel/types': ^7.20.7
       '@so1ve/eslint-config': ^0.45.0
       '@types/node': ^18.13.0
@@ -24,7 +24,7 @@ importers:
       vite: ^4.1.1
       vitest: ^0.29.0
     devDependencies:
-      '@antfu/ni': 0.20.0
+      '@antfu/ni': 0.21.2
       '@babel/types': 7.21.4
       '@so1ve/eslint-config': 0.45.3_vwh6htx42aidho2qgfca5u5rwm
       '@types/node': 18.15.11
@@ -65,8 +65,8 @@ importers:
 
 packages:
 
-  /@antfu/ni/0.20.0:
-    resolution: {integrity: sha512-mBgAuq2b0daSA/14LMyjEjaInD7/Zd7KVXZge7bQPKmtQJFqy9/pWBml6DMkMreeHQEomMtIbbeqReNJ/74kjA==}
+  /@antfu/ni/0.21.2:
+    resolution: {integrity: sha512-nzj1bnkUIYZt6ANeQzGXGUOeeJ9k/TDnfwaAE/ElxSKQxBjjJ+PQMcZfpAKKwRc1rE+PGJ8WRQBWRUrQn7Mnuw==}
     hasBin: true
     dev: true
 
