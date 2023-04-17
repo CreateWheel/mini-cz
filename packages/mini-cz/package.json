@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/prompts": "^2.4.2",
     "c12": "^1.1.2",
-    "clerc": "^0.31.0",
+    "clerc": "^0.39.0",
     "execa": "^7.0.0",
     "kons": "^0.6.2",
     "prompts": "^2.4.2",

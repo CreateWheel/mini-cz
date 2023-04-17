@@ -49,7 +49,7 @@ importers:
     specifiers:
       '@types/prompts': ^2.4.2
       c12: ^1.1.2
-      clerc: ^0.31.0
+      clerc: ^0.39.0
       execa: ^7.0.0
       kons: ^0.6.2
       prompts: ^2.4.2
@@ -57,7 +57,7 @@ importers:
     devDependencies:
       '@types/prompts': 2.4.4
       c12: 1.2.0
-      clerc: 0.31.0
+      clerc: 0.39.0
       execa: 7.1.1
       kons: 0.6.2
       prompts: 2.4.2
@@ -1158,8 +1158,8 @@ packages:
       escape-string-regexp: 1.0.5
     dev: true
 
-  /clerc/0.31.0:
-    resolution: {integrity: sha512-ChiFIpmmGvwic53sOnNfBFq2uWiZ1tDtuSiD5ckceui/V/n38/rusaoS2DowinBzwsy038RI5s6eqh8n+NBg6g==}
+  /clerc/0.39.0:
+    resolution: {integrity: sha512-SjCprPvXOEUa3YYxlaUkyZsIlNkARPTZ9ZR6JpgpY3oRXVOoqjTyWwpke10cQOaNk0HVaw2IsPTBuTxZbggKgQ==}
     dev: true
 
   /cli-truncate/3.1.0:
