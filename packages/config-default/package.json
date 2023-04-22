@@ -40,13 +40,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && puild",
-    "watch": "puild --watch"
+    "build": "rimraf dist && pkgroll",
+    "watch": "pkgroll --watch"
   },
   "peerDependencies": {
     "mini-cz": "*"
-  },
-  "devDependencies": {
-    "mini-cz": "workspace:*"
   }
 }

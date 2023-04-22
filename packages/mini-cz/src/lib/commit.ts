@@ -5,14 +5,14 @@ import task from "tasuku";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
-import { haveUnaddedChanges, noFileIsAdded } from "../utils/git";
+import { checkIsUserInfoConfigured, haveUnaddedChanges, noFileIsAdded } from "../utils/git";
 
 interface GenerateCommitOptions {
-  kind: string
-  breaking: boolean
-  emoji?: string
-  scope?: string
-  message: string
+  kind: string;
+  breaking: boolean;
+  emoji?: string;
+  scope?: string;
+  message: string;
 }
 const generateCommitMessage = ({ kind, scope, emoji, message, breaking }: GenerateCommitOptions) => {
   let commitMessage = "";
@@ -32,11 +32,11 @@ const generateCommitMessage = ({ kind, scope, emoji, message, breaking }: Genera
 };
 
 interface CommitOptions {
-  add?: boolean
-  message?: string
-  breaking?: boolean
-  kind?: string
-  scope?: string
+  add?: boolean;
+  message?: string;
+  breaking?: boolean;
+  kind?: string;
+  scope?: string;
 }
 
 export const commit = async (
@@ -49,6 +49,10 @@ export const commit = async (
     scope,
   }: CommitOptions = {},
 ) => {
+  if (!await checkIsUserInfoConfigured()) {
+    errorAndExit("User info (user.name and user.email) is not configured. Please configure it first.");
+  }
+
   if (await haveUnaddedChanges() && !add) {
     const { addAll } = await prompt({
       name: "addAll",
@@ -103,7 +107,7 @@ export const commit = async (
     errorAndExit("Kind is required!");
   }
 
-  const scopeChoices = (config.scopes || []).map(scope => ({
+  const scopeChoices = (config.scopes ?? []).map(scope => ({
     title: scope,
     value: scope,
   }));
@@ -140,7 +144,13 @@ export const commit = async (
   }
 
   const selectedKind = config.kinds.find(k => k.name === kind);
-  const commitMessage = generateCommitMessage({ kind: kind!, scope, message: message!, emoji: selectedKind?.emoji, breaking: breaking! });
+  const commitMessage = generateCommitMessage({
+    kind: kind!,
+    scope,
+    message: message!,
+    emoji: selectedKind?.emoji,
+    breaking: breaking!,
+  });
   task("git commit", async ({ setTitle }) => {
     setTitle("git commit");
     await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });

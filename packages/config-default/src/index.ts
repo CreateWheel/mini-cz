@@ -19,7 +19,8 @@ export default defineConfig({
     },
     {
       name: "style",
-      description: "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+      description:
+        "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
       emoji: "💎",
     },
     {
@@ -39,7 +40,8 @@ export default defineConfig({
     },
     {
       name: "chore",
-      description: "Changes that do not modify src or test files. Such as updating build tasks, package manager configs, etc.",
+      description:
+        "Changes that do not modify src or test files. Such as updating build tasks, package manager configs, etc.",
       emoji: "🤖",
     },
   ],

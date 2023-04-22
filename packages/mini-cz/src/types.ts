@@ -1,10 +1,10 @@
 export interface Config {
-  kinds: Kind[]
-  scopes?: string[]
+  kinds: Kind[];
+  scopes?: string[];
 }
 
 export interface Kind {
-  name: string
-  description?: string
-  emoji?: string
+  name: string;
+  description?: string;
+  emoji?: string;
 }
