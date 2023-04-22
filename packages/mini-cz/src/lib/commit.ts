@@ -59,7 +59,7 @@ export const commit = async (
   }
 
   if (add) {
-    task("git add -A", async ({ setTitle }) => {
+    await task("git add -A", async ({ setTitle }) => {
       setTitle("git add -A");
       await execa("git", ["add", "-A"]);
     });
