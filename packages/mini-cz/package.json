@@ -53,11 +53,11 @@
   },
   "devDependencies": {
     "@types/prompts": "^2.4.4",
-    "c12": "^1.4.1",
     "clerc": "^0.40.0",
     "execa": "^7.1.1",
     "kons": "^0.7.1",
     "prompts": "^2.4.2",
-    "tasuku": "^2.0.1"
+    "tasuku": "^2.0.1",
+    "yajuu": "^0.1.0"
   }
 }
