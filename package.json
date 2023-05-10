@@ -17,14 +17,14 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm -r run build",
-    "watch": "pnpm -r --parallel run watch",
+    "commit": "tsx ./packages/mini-cz/src/cli.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepublishOnly": "nr build",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag && nr build && pnpm publish -r --filter ./packages/*",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "commit": "tsx ./packages/mini-cz/src/cli.ts"
+    "watch": "pnpm -r --parallel run watch"
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.3",

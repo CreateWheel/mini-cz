@@ -5,7 +5,11 @@ import task from "tasuku";
 
 import type { Config } from "../types";
 import { errorAndExit } from "../utils";
-import { checkIsUserInfoConfigured, haveUnaddedChanges, noFileIsAdded } from "../utils/git";
+import {
+  checkIsUserInfoConfigured,
+  haveUnaddedChanges,
+  noFileIsAdded,
+} from "../utils/git";
 
 interface GenerateCommitOptions {
   kind: string;
@@ -14,7 +18,13 @@ interface GenerateCommitOptions {
   scope?: string;
   message: string;
 }
-const generateCommitMessage = ({ kind, scope, emoji, message, breaking }: GenerateCommitOptions) => {
+function generateCommitMessage({
+  kind,
+  scope,
+  emoji,
+  message,
+  breaking,
+}: GenerateCommitOptions) {
   let commitMessage = "";
   if (emoji) {
     commitMessage += `${emoji} `;
@@ -28,8 +38,9 @@ const generateCommitMessage = ({ kind, scope, emoji, message, breaking }: Genera
   }
   commitMessage += ": ";
   commitMessage += message;
+
   return commitMessage;
-};
+}
 
 interface CommitOptions {
   add?: boolean;
@@ -39,21 +50,17 @@ interface CommitOptions {
   scope?: string;
 }
 
-export const commit = async (
+export async function commit(
   config: Config,
-  {
-    add = false,
-    message,
-    breaking,
-    kind,
-    scope,
-  }: CommitOptions = {},
-) => {
-  if (!await checkIsUserInfoConfigured()) {
-    errorAndExit("User info (user.name and user.email) is not configured. Please configure it first.");
+  { add = false, message, breaking, kind, scope }: CommitOptions = {},
+) {
+  if (!(await checkIsUserInfoConfigured())) {
+    errorAndExit(
+      "User info (user.name and user.email) is not configured. Please configure it first.",
+    );
   }
 
-  if (await haveUnaddedChanges() && !add) {
+  if ((await haveUnaddedChanges()) && !add) {
     const { addAll } = await prompt({
       name: "addAll",
       message: "You have unadded changes. Do you want to add all changes?",
@@ -78,14 +85,14 @@ export const commit = async (
     value: name,
     description,
   }));
-  const promptKind = async () => {
+  async function promptKind() {
     kind = await prompt({
       name: "kind",
       message: "Choose commit kind:",
       type: "autocomplete",
       choices: kindChoices,
     }).then(({ kind }) => kind);
-  };
+  }
   if (!kind) {
     await promptKind();
   }
@@ -107,20 +114,20 @@ export const commit = async (
     errorAndExit("Kind is required!");
   }
 
-  const scopeChoices = (config.scopes ?? []).map(scope => ({
+  const scopeChoices = (config.scopes ?? []).map((scope) => ({
     title: scope,
     value: scope,
   }));
-  const promptScope = async () => {
+  async function promptScope() {
     scope = config.scopes?.length
       ? await prompt({
-        name: "scope",
-        message: "Choose commit scope:",
-        type: "autocomplete",
-        choices: scopeChoices,
-      }).then(({ scope }) => scope)
+          name: "scope",
+          message: "Choose commit scope:",
+          type: "autocomplete",
+          choices: scopeChoices,
+        }).then(({ scope }) => scope)
       : undefined;
-  };
+  }
 
   if (!scope) {
     await promptScope();
@@ -143,7 +150,7 @@ export const commit = async (
     errorAndExit("Message is required!");
   }
 
-  const selectedKind = config.kinds.find(k => k.name === kind);
+  const selectedKind = config.kinds.find((k) => k.name === kind);
   const commitMessage = generateCommitMessage({
     kind: kind!,
     scope,
@@ -155,4 +162,4 @@ export const commit = async (
     setTitle("git commit");
     await execa("git", ["commit", "-m", commitMessage], { stdio: "ignore" });
   });
-};
+}

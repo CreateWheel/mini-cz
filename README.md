@@ -104,10 +104,7 @@ export default defineConfig({
     },
   ],
   // And you can add some scope
-  scopes: [
-    "core",
-    "config-default",
-  ],
+  scopes: ["core", "config-default"],
 });
 ```
 

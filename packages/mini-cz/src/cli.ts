@@ -1,4 +1,11 @@
-import { Clerc, friendlyErrorPlugin, helpPlugin, notFoundPlugin, strictFlagsPlugin, versionPlugin } from "clerc";
+import {
+  Clerc,
+  friendlyErrorPlugin,
+  helpPlugin,
+  notFoundPlugin,
+  strictFlagsPlugin,
+  versionPlugin,
+} from "clerc";
 
 import { description, version } from "../package.json";
 

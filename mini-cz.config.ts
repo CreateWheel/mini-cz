@@ -3,8 +3,5 @@ import { defineConfig } from "./packages/mini-cz/src/index";
 
 export default defineConfig({
   ...configDefault,
-  scopes: [
-    "mini-cz",
-    "config-default",
-  ],
+  scopes: ["mini-cz", "config-default"],
 });
