@@ -2,7 +2,7 @@
   "name": "@mini-cz/monorepo",
   "private": true,
   "version": "0.7.0",
-  "packageManager": "pnpm@7.32.2",
+  "packageManager": "pnpm@8.5.0",
   "author": "Ray <i@mk1.io> (https://github.com/so1ve)",
   "description": "",
   "keywords": [],
@@ -28,19 +28,19 @@
   },
   "devDependencies": {
     "@antfu/ni": "^0.21.3",
-    "@babel/types": "^7.21.4",
-    "@so1ve/eslint-config": "^0.70.0",
-    "@types/node": "^18.15.13",
+    "@babel/types": "^7.21.5",
+    "@so1ve/eslint-config": "^0.81.0",
+    "@types/node": "^18.16.6",
     "bumpp": "^9.1.0",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "jiti": "^1.18.2",
-    "pkgroll": "^1.9.0",
-    "pnpm": "^7.32.2",
+    "pkgroll": "^1.10.0",
+    "pnpm": "^8.5.0",
     "rimraf": "^5.0.0",
-    "tsx": "^3.12.6",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4",
-    "vite": "^4.3.1",
-    "vitest": "^0.30.1"
+    "vite": "^4.3.5",
+    "vitest": "^0.31.0"
   },
   "pnpm": {
     "patchedDependencies": {
