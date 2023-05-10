@@ -41,8 +41,13 @@ export default defineConfig({
     {
       name: "chore",
       description:
-        "Changes that do not modify src or test files. Such as updating build tasks, package manager configs, etc.",
+        "Changes that do not modify src or test files. Such as updating build tasks, package manager configs, etc",
       emoji: "🤖",
+    },
+    {
+      name: "ci",
+      description: "Changes to our CI configuration files and script",
+      emoji: "👩✈️",
     },
   ],
 });
