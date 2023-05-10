@@ -42,7 +42,7 @@ function generateCommitMessage({
   return commitMessage;
 }
 
-interface CommitOptions {
+export interface CommitOptions {
   add?: boolean;
   message?: string;
   breaking?: boolean;
