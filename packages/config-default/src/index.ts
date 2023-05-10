@@ -47,7 +47,7 @@ export default defineConfig({
     {
       name: "ci",
       description: "Changes to our CI configuration files and script",
-      emoji: "👩✈️",
+      emoji: "✈️",
     },
   ],
 });
