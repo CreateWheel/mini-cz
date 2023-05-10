@@ -152,9 +152,9 @@ export async function commit(
 
   const selectedKind = config.kinds.find((k) => k.name === kind);
   const commitMessage = generateCommitMessage({
-    kind: kind!,
+    kind,
     scope,
-    message: message!,
+    message,
     emoji: selectedKind?.emoji,
     breaking: breaking!,
   });
