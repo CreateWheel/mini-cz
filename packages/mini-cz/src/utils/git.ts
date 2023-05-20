@@ -19,17 +19,17 @@ async function gitStatus() {
 }
 
 export async function haveUnaddedChanges() {
-  const unaddedChanges = (await gitStatus()).some((s) => s[1] === "M");
+  return  (await gitStatus()).some((s) => s[1] === "M");
 
-  return unaddedChanges;
+  
 }
 
 export async function noFileIsAdded() {
-  const isNoFileAdded = (await gitStatus()).every(
+  return (await gitStatus()).every(
     (s) => s[0] === "?" || s[0] === " ",
   );
 
-  return isNoFileAdded;
+
 }
 
 export async function checkIsUserInfoConfigured() {
