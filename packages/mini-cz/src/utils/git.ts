@@ -18,19 +18,11 @@ async function gitStatus() {
   return stdout.split("\n");
 }
 
-export async function haveUnaddedChanges() {
-  return  (await gitStatus()).some((s) => s[1] === "M");
+export const haveUnaddedChanges = async () =>
+  (await gitStatus()).some((s) => s[1] === "M");
 
-  
-}
-
-export async function noFileIsAdded() {
-  return (await gitStatus()).every(
-    (s) => s[0] === "?" || s[0] === " ",
-  );
-
-
-}
+export const noFileIsAdded = async () =>
+  (await gitStatus()).every((s) => s[0] === "?" || s[0] === " ");
 
 export async function checkIsUserInfoConfigured() {
   const { stdout: userName } = await exec("git", ["config", "user.name"]);
