@@ -40,14 +40,7 @@ export const commitCommand = defineCommand(
   },
   async ({ flags }) => {
     const { commit } = await import("../lib");
-    const config = await resolveConfig();
-    const options: CommitOptions = {
-      add: flags.add,
-      message: flags.message,
-      breaking: flags.breaking,
-      kind: flags.kind,
-      scope: flags.scope,
-    };
-    await commit(config, options);
+    const config = await resolveConfig()
+    await commit(config, flags);
   },
 );
