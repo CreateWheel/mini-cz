@@ -3,9 +3,9 @@
   "version": "0.8.0",
   "packageManager": "pnpm@8.6.3",
   "author": "Ray <i@mk1.io> (@so1ve)",
+  "type": "module",
   "description": "Mini-cz default config.",
   "keywords": [],
-  "type": "module",
   "homepage": "https://github.com/CreateWheel/mini-cz#readme",
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
-import { execa } from "execa";
 import type { ExecaChildProcess } from "execa";
+import { execa } from "execa";
 
 async function exec(
   command: string,

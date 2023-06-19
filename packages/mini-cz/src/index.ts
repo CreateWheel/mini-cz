@@ -1,2 +1,2 @@
-export { defineConfig } from "./utils";
 export * from "./lib";
+export { defineConfig } from "./utils";

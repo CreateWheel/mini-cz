@@ -1,7 +1,6 @@
 import { loadConfig } from "yajuu";
 
 import type { Config } from "../types";
-
 import { errorAndExit } from "./helpers";
 
 export async function resolveConfig() {

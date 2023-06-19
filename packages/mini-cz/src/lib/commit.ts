@@ -1,5 +1,5 @@
-import * as kons from "kons";
 import { execa } from "execa";
+import * as kons from "kons";
 import prompt from "prompts";
 import task from "tasuku";
 
