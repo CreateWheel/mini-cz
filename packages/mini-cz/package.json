@@ -1,7 +1,7 @@
 {
   "name": "mini-cz",
   "version": "0.8.0",
-  "packageManager": "pnpm@8.6.4",
+  "packageManager": "pnpm@8.6.5",
   "author": "Ray <i@mk1.io> (@so1ve)",
   "type": "module",
   "description": "The minimal commitizen cli.",
