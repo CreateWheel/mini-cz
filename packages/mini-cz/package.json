@@ -1,6 +1,6 @@
 {
   "name": "mini-cz",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "packageManager": "pnpm@8.6.6",
   "author": "Ray <i@mk1.io> (@so1ve)",
   "type": "module",
