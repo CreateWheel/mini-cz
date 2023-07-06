@@ -19,7 +19,7 @@ async function gitStatus() {
 }
 
 export const haveUnaddedChanges = async () =>
-  (await gitStatus()).some((s) => s[1] === "M");
+  (await gitStatus()).some((s) => s[1] === "M" || s[1] === "?");
 
 export const noFileIsAdded = async () =>
   (await gitStatus()).every((s) => s[0] === "?" || s[0] === " ");
