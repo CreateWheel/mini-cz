@@ -48,10 +48,10 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rimraf dist && pkgroll --minify",
+    "build": "rimraf dist && pkgroll",
     "watch": "pkgroll --watch"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/prompts": "^2.4.4",
     "clerc": "^0.40.0",
     "execa": "^7.1.1",
